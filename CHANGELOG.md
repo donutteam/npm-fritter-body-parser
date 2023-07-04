@@ -1,5 +1,6 @@
 ## 1.0.2
 
+* Fixed an issue where the body parser was checking for the wrong content type for `application/x-www-form-urlencoded` bodies.
 * Removing the `src` folder from the NPM ignore to allow for better debugging.
 * Updated `@fritter/core` dev dependency to v0.1.6.
 

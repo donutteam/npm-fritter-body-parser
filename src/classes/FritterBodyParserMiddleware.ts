@@ -41,7 +41,7 @@ export class FritterBodyParserMiddleware
 
 			switch (contentType)
 			{
-				case "application/www-form-urlencoded":
+				case "application/x-www-form-urlencoded":
 				case "multipart/form-data":
 					context.parsedBody = await this.parseFormBody(context.nodeRequest);
 
@@ -67,7 +67,7 @@ export class FritterBodyParserMiddleware
 	}
 
 	/** Gets a request body from an IncomingMessage. */
-	async getBody(incomingMessage : IncomingMessage) : Promise<string>
+	private async getBody(incomingMessage : IncomingMessage) : Promise<string>
 	{
 		return new Promise((resolve, reject) =>
 		{
@@ -91,7 +91,7 @@ export class FritterBodyParserMiddleware
 	}
 
 	/** Parses a form body from an IncomingMessage. */
-	async parseFormBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
+	private async parseFormBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
 	{
 		const body = new FritterBodyParserBody();
 
@@ -107,7 +107,7 @@ export class FritterBodyParserMiddleware
 		}
 		catch (error)
 		{
-			// Note: Just ignore errors (for now?)
+			// TODO: Do something with this error. Maybe emit an event?
 		}
 
 		for (const [ key, value ] of Object.entries(fields))
@@ -143,7 +143,7 @@ export class FritterBodyParserMiddleware
 	}
 
 	/** Parses a JSON body from an IncomingMessage. */
-	async parseJsonBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
+	private async parseJsonBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
 	{
 		const body = new FritterBodyParserBody();
 
@@ -161,7 +161,7 @@ export class FritterBodyParserMiddleware
 		}
 		catch (error)
 		{
-			// Note: Just ignore errors (for now?)
+			// TODO: Do something with this error. Maybe emit an event?
 		}
 
 		return body;
