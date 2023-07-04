@@ -1,3 +1,6 @@
+## 1.0.2
+Removing the `src` folder from the NPM ignore to allow for better debugging.
+
 ## 1.0.1
 Adding missing export for the `FritterBodyParserBody` class.
 
