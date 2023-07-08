@@ -9,6 +9,8 @@ import Formidable from "formidable";
 
 import { FritterBodyParserBody } from "./FritterBodyParserBody.js";
 
+import { PossibleJSONData } from "../types/PossibleJSONData.js";
+
 //
 // Class
 //
@@ -114,7 +116,7 @@ export class FritterBodyParserMiddleware
 		{
 			if (Array.isArray(value))
 			{
-				body.fields[key] = value[0];
+				body.fields[key] = value[0] ?? null;
 				body.fieldArrays[key] = value;
 			}
 			else
@@ -151,7 +153,12 @@ export class FritterBodyParserMiddleware
 		{
 			const bodyString = await this.getBody(request);
 
-			const bodyData = JSON.parse(bodyString);
+			const bodyData = JSON.parse(bodyString) as PossibleJSONData;
+
+			if (bodyData == null || typeof bodyData !== "object" || Array.isArray(bodyData))
+			{
+				return body;
+			}
 
 			for (const [ key, value ] of Object.entries(bodyData))
 			{

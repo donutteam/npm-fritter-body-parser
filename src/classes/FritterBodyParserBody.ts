@@ -4,11 +4,11 @@
 
 import Formidable from "formidable";
 
+import { PossibleJSONData } from "../types/PossibleJSONData.js";
+
 //
 // Exports
 //
-
-export type PossibleJSONData = string | number | boolean | null | { [key : string] : PossibleJSONData } | PossibleJSONData[];
 
 export type FritterBodyParserBodySingleFields = { [key : string] : PossibleJSONData };
 
