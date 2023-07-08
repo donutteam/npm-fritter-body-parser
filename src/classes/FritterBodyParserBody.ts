@@ -8,9 +8,11 @@ import Formidable from "formidable";
 // Exports
 //
 
-export type FritterBodyParserBodySingleFields = { [key : string] : unknown };
+export type PossibleJSONData = string | number | boolean | null | { [key : string] : PossibleJSONData } | PossibleJSONData[];
 
-export type FritterBodyParserBodyArrayFields = { [key : string] : unknown[] };
+export type FritterBodyParserBodySingleFields = { [key : string] : PossibleJSONData };
+
+export type FritterBodyParserBodyArrayFields = { [key : string] : PossibleJSONData[] };
 
 export type FritterBodyParserBodySingleFiles = { [key : string] : Formidable.File };
 

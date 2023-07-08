@@ -1,3 +1,6 @@
+## 1.0.3
+Made the keys of parsedBody use the new `PossibleJSONData` type. This allows for better type checking when using the body parser as `unknown` was too broad.
+
 ## 1.0.2
 
 * Fixed an issue where the body parser was checking for the wrong content type for `application/x-www-form-urlencoded` bodies.
