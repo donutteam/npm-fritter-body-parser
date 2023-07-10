@@ -1,3 +1,6 @@
+## 1.1.1
+Making the options object introduced in 1.1.0 optional.
+
 ## 1.1.0
 Added the ability to pass options to the underlying Formidible instance. This allows for things like setting the maximum file size.
 

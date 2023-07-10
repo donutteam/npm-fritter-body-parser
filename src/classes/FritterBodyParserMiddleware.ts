@@ -37,7 +37,7 @@ export class FritterBodyParserMiddleware
 	public readonly execute : FritterMiddlewareFunction<FritterBodyParserContext>;
 
 	/** Constructs a new FritterBodyParserMiddleware instance. */
-	public constructor(options : FritterBodyParserMiddlewareOptions)
+	public constructor(options : FritterBodyParserMiddlewareOptions = {})
 	{
 		this.formidableOptions = options.formidableOptions ?? {};
 
