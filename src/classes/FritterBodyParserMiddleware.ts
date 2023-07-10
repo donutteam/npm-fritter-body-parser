@@ -20,15 +20,27 @@ export interface FritterBodyParserContext extends FritterContext
 	parsedBody : FritterBodyParserBody;
 }
 
+/** Options for a FritterBodyParserMiddleware instance. */
+export interface FritterBodyParserMiddlewareOptions
+{
+	/** Options for the underlying Formidable instance. */
+	formidableOptions? : Formidable.Options;
+}
+
 /** A middleware that handles parsing various incoming bodies. */
 export class FritterBodyParserMiddleware
 {
+	/** Options for the underlying Formidable instance. */
+	public readonly formidableOptions : Formidable.Options;
+
 	/** The middleware function that parses the body. */
 	public readonly execute : FritterMiddlewareFunction<FritterBodyParserContext>;
 
 	/** Constructs a new FritterBodyParserMiddleware instance. */
-	public constructor()
+	public constructor(options : FritterBodyParserMiddlewareOptions)
 	{
+		this.formidableOptions = options.formidableOptions ?? {};
+
 		this.execute = async (context, next) =>
 		{
 			//
@@ -103,7 +115,7 @@ export class FritterBodyParserMiddleware
 
 		try
 		{
-			const formidable = Formidable();
+			const formidable = Formidable(this.formidableOptions);
 
 			[ fields, files ] = await formidable.parse(request);
 		}

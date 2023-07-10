@@ -1,3 +1,6 @@
+## 1.1.0
+Added the ability to pass options to the underlying Formidible instance. This allows for things like setting the maximum file size.
+
 ## 1.0.3
 Made the keys of parsedBody use the new `PossibleJSONData` type. This allows for better type checking when using the body parser as `unknown` was too broad.
 
