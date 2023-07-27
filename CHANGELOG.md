@@ -1,3 +1,6 @@
+## 1.1.2
+Updating packages.
+
 ## 1.1.1
 Making the options object introduced in 1.1.0 optional.
 
