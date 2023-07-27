@@ -7,7 +7,7 @@ import type { IncomingMessage } from "node:http";
 import { FritterContext, FritterMiddlewareFunction } from "@fritter/core";
 import Formidable from "formidable";
 
-import { FritterBodyParserBody } from "./FritterBodyParserBody.js";
+import { FritterBodyParserMiddlewareBody } from "./FritterBodyParserMiddlewareBody.js";
 
 import { PossibleJSONData } from "../types/PossibleJSONData.js";
 
@@ -15,9 +15,9 @@ import { PossibleJSONData } from "../types/PossibleJSONData.js";
 // Class
 //
 
-export interface FritterBodyParserContext extends FritterContext
+export interface FritterBodyParserMiddlewareFritterContext extends FritterContext
 {
-	parsedBody : FritterBodyParserBody;
+	parsedBody : FritterBodyParserMiddlewareBody;
 }
 
 /** Options for a FritterBodyParserMiddleware instance. */
@@ -34,7 +34,7 @@ export class FritterBodyParserMiddleware
 	public readonly formidableOptions : Formidable.Options;
 
 	/** The middleware function that parses the body. */
-	public readonly execute : FritterMiddlewareFunction<FritterBodyParserContext>;
+	public readonly execute : FritterMiddlewareFunction<FritterBodyParserMiddlewareFritterContext>;
 
 	/** Constructs a new FritterBodyParserMiddleware instance. */
 	public constructor(options : FritterBodyParserMiddlewareOptions = {})
@@ -67,7 +67,7 @@ export class FritterBodyParserMiddleware
 					break;
 
 				default:
-					context.parsedBody = new FritterBodyParserBody();
+					context.parsedBody = new FritterBodyParserMiddlewareBody();
 
 					break;
 			}
@@ -105,9 +105,9 @@ export class FritterBodyParserMiddleware
 	}
 
 	/** Parses a form body from an IncomingMessage. */
-	private async parseFormBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
+	private async parseFormBody(request : IncomingMessage) : Promise<FritterBodyParserMiddlewareBody>
 	{
-		const body = new FritterBodyParserBody();
+		const body = new FritterBodyParserMiddlewareBody();
 
 		let fields : Formidable.Fields = {};
 
@@ -157,9 +157,9 @@ export class FritterBodyParserMiddleware
 	}
 
 	/** Parses a JSON body from an IncomingMessage. */
-	private async parseJsonBody(request : IncomingMessage) : Promise<FritterBodyParserBody>
+	private async parseJsonBody(request : IncomingMessage) : Promise<FritterBodyParserMiddlewareBody>
 	{
-		const body = new FritterBodyParserBody();
+		const body = new FritterBodyParserMiddlewareBody();
 
 		try
 		{
@@ -186,3 +186,10 @@ export class FritterBodyParserMiddleware
 		return body;
 	}
 }
+
+//
+// Legacy Names
+//
+
+/** @deprecated */
+export type FritterBodyParserContext = FritterBodyParserMiddlewareFritterContext;

@@ -1,3 +1,6 @@
+## 1.1.3
+Renaming various symbols and deprecating the old names. This is to make the library more consistent with the rest of the Fritter ecosystem.
+
 ## 1.1.2
 Updating packages.
 
@@ -17,7 +20,7 @@ Made the keys of parsedBody use the new `PossibleJSONData` type. This allows for
 * Updated `@fritter/core` dev dependency to v0.1.6.
 
 ## 1.0.1
-Adding missing export for the `FritterBodyParserBody` class.
+Adding missing export for the `FritterBodyParserMiddlewareBody` class.
 
 ## 1.0.0
 Initial release.
