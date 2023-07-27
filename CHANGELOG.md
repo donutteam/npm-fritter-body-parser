@@ -1,3 +1,8 @@
+## 1.2.0
+Added the `raw` property to the `FritterBodyParserMiddlewareBody` class. This contains the raw text of the request body.
+
+For technical reasons, this is only available when the request's `Content-Type` is `application/json`. Otherwise, it is null.
+
 ## 1.1.3
 Renaming various symbols and deprecating the old names. This is to make the library more consistent with the rest of the Fritter ecosystem.
 

@@ -32,6 +32,9 @@ export class FritterBodyParserMiddlewareBody
 
 	/** An object containing keys for each file in the body and an array of ALL files with that name. */
 	fileArrays : FritterBodyParserMiddlewareBodyArrayFiles = {};
+
+	/** The raw text of the request body. For technical reasons, this is only available for JSON bodies. */
+	raw : string | null;
 }
 
 //

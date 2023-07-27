@@ -165,6 +165,8 @@ export class FritterBodyParserMiddleware
 		{
 			const bodyString = await this.getBody(request);
 
+			body.raw = bodyString;
+
 			const bodyData = JSON.parse(bodyString) as PossibleJSONData;
 
 			if (bodyData == null || typeof bodyData !== "object" || Array.isArray(bodyData))
