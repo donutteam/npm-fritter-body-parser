@@ -1,3 +1,9 @@
+## 2.0.0
+
+* Updated various packages.
+	* Also Slight internal logic tweaks to accommodate changes to `@types/formidable`.
+* Removed various deprecated fields.
+
 ## 1.2.0
 Added the `raw` property to the `FritterBodyParserMiddlewareBody` class. This contains the raw text of the request body.
 
