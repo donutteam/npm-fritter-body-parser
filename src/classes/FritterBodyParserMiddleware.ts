@@ -188,10 +188,3 @@ export class FritterBodyParserMiddleware
 		return body;
 	}
 }
-
-//
-// Legacy Names
-//
-
-/** @deprecated */
-export type FritterBodyParserContext = FritterBodyParserMiddlewareFritterContext;

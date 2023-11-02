@@ -36,22 +36,3 @@ export class FritterBodyParserMiddlewareBody
 	/** The raw text of the request body. For technical reasons, this is only available for JSON bodies. */
 	raw : string | null;
 }
-
-//
-// Legacy Names
-//
-
-/** @deprecated */
-export type FritterBodyParserBodySingleFields = FritterBodyParserMiddlewareBodySingleFields;
-
-/** @deprecated */
-export type FritterBodyParserBodyArrayFields = FritterBodyParserMiddlewareBodyArrayFields;
-
-/** @deprecated */
-export type FritterBodyParserBodySingleFiles = FritterBodyParserMiddlewareBodySingleFiles;
-
-/** @deprecated */
-export type FritterBodyParserBodyArrayFiles = FritterBodyParserMiddlewareBodyArrayFiles;
-
-/** @deprecated */
-export const FritterBodyParserBody = FritterBodyParserMiddlewareBody;
