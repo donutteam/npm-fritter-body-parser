@@ -126,6 +126,14 @@ export class FritterBodyParserMiddleware
 
 		for (const [ key, value ] of Object.entries(fields))
 		{
+			// Note: Upgrading from @types/formidable@3.4.0 to @types/formidable@3.4.4
+			//	introduces a possible "undefined" here? I'm not sure why, but this
+			//	check is needed now according to the type defs...
+			if (value == undefined)
+			{
+				continue;
+			}
+
 			if (Array.isArray(value))
 			{
 				body.fields[key] = value[0] ?? null;
@@ -140,10 +148,21 @@ export class FritterBodyParserMiddleware
 
 		for (const [ key, value ] of Object.entries(files))
 		{
+			// See above note when iterating fields
+			if (value == undefined)
+			{
+				continue;
+			}
+
 			if (Array.isArray(value))
 			{
-				// Note: Type cast because this array cannot be empty.
-				body.files[key] = value[0] as Formidable.File;
+				// Note: this used to be type cast value[0] as Formidable.File but this seems cleaner
+				if (value[0] == undefined)
+				{
+					continue;
+				}
+
+				body.files[key] = value[0];
 				body.fileArrays[key] = value;
 			}
 			else
